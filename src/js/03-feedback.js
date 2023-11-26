@@ -6,7 +6,7 @@ const email = document.querySelector('input[name = "email"]');
 
 const localStorageKey = 'feedback-form-state';
 
-form.addEventListener('input',throttle(onInputData, 500));
+form.addEventListener('input',throttle (onInputData, 500));
 
 form.addEventListener('submit', e => {
     e.preventDefault();
