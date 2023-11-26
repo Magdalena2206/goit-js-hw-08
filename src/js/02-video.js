@@ -13,7 +13,7 @@ const getCurrentTime = function (currentTime) {
 };
 player.setCurrentTime(JSON.parse(localStorage.getItem(currentTimeKey)) || 0);
 
-   player.catch(function (error) { console.log('error') });
+   player.catch(function (error) { console.error(error) });
 
 
 

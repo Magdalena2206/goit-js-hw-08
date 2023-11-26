@@ -6,7 +6,13 @@ const email = document.querySelector('input[name = "email"]');
 
 const localStorageKey = 'feedback-form-state';
 
-form.addEventListener('input',throttle (onInputData, 500));
+function onInputData(e) {
+    objectSave = { email: email.value, message: message.value };
+    localStorage.setItem(localStorageKey, JSON.stringify(objectSave));
+
+};
+
+form.addEventListener('input', throttle(onInputData, 500));
 
 form.addEventListener('submit', e => {
     e.preventDefault();
@@ -17,11 +23,7 @@ form.addEventListener('submit', e => {
     
 });
 
-function onInputData(e) {
-    objectSave = { email: email.value, message: message.value };
-    localStorage.setItem(localStorageKey, JSON.stringify(objectSave));
 
-};
 
 const load = e => {
     try {
