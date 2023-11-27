@@ -11,14 +11,14 @@ const localStorageKey = 'feedback-form-state';
 form.addEventListener('input', throttle(onInputData, 500));
 form.addEventListener('submit', onFormSubmit);
 
-let objectSave = JSON.parse(localStorage.getItem(localStorageKey)) || {};
+let dataForm = JSON.parse(localStorage.getItem(localStorageKey)) || {};
 const { email, message } = form.elements;
 reloadPage();
 
 
 function onInputData(e) {
     objectSave = { email: email.value, message: message.value };
-    localStorage.setItem(localStorageKey, JSON.stringify(objectSave));
+    localStorage.setItem(localStorageKey, JSON.stringify(dataForm));
 
 };
 
@@ -32,7 +32,7 @@ function onInputData(e) {
     }
     localStorage.removeItem(localStorageKey);
     e.currentTarget.reset();
-    objectSave = {};
+    dataForm = {};
         
     
 };
