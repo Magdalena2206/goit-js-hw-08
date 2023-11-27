@@ -1,8 +1,6 @@
 import { throttle } from 'lodash.throttle';
 
 const form = document.querySelector('.feedback-form');
-// const message = document.querySelector('textarea[name = "message]');
-// const email = document.querySelector('input[name = "email"]');
 
 const localStorageKey = 'feedback-form-state';
 
@@ -17,7 +15,7 @@ reloadPage();
 
 
 function onInputData(e) {
-    objectSave = { email: email.value, message: message.value };
+    dataForm = { email: email.value, message: message.value };
     localStorage.setItem(localStorageKey, JSON.stringify(dataForm));
 
 };
