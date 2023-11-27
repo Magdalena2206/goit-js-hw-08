@@ -5,7 +5,7 @@ const form = document.querySelector('.feedback-form');
 const localStorageKey = 'feedback-form-state';
 
 
-const throttledFetchData = throttle(onInputData, 5000);
+const throttledFetchData = throttle(onInputData, 500);
 form.addEventListener('input', throttledFetchData);
 form.addEventListener('submit', onFormSubmit);
 
