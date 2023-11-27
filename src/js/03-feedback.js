@@ -36,3 +36,9 @@ function onInputData(e) {
 };
 
 
+function reloadPage() {
+    if (dataForm) {
+        email.value = dataForm.email || '';
+        message.value = dataForm.message || '';
+    }
+}
