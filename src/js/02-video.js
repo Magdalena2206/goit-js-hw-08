@@ -10,10 +10,10 @@ const getCurrentTime = function (currentTime) {
     const seconds = currentTime.seconds;
     localStorage.setItem(currentTimeKey, JSON.stringify(seconds));
 };
-player.on('timeupdate', throttle(getCurrentTime, 1000))
-.setCurrentTime(JSON.parse(localStorage.getItem(currentTimeKey)) || 0)
+player.on('timeupdate', throttle(getCurrentTime, 1000));
+player.setCurrentTime(JSON.parse(localStorage.getItem(currentTimeKey)) || 0);
 
-.catch(function (error) { console.error(error) });
+player.catch(function (error) { console.error(error) });
 
 
 
