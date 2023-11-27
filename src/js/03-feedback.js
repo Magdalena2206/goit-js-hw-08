@@ -1,10 +1,20 @@
 import { throttle } from 'lodash.throttle';
 
 const form = document.querySelector('.feedback-form');
-const message = document.querySelector('textarea[name = "message]');
-const email = document.querySelector('input[name = "email"]');
+// const message = document.querySelector('textarea[name = "message]');
+// const email = document.querySelector('input[name = "email"]');
 
 const localStorageKey = 'feedback-form-state';
+
+
+
+form.addEventListener('input', throttle(onInputData, 500));
+form.addEventListener('submit', onFormSubmit);
+
+let objectSave = JSON.parse(localStorage.getItem(localStorageKey)) || {};
+const { email, message } = form.elements;
+reloadPage();
+
 
 function onInputData(e) {
     objectSave = { email: email.value, message: message.value };
@@ -12,29 +22,19 @@ function onInputData(e) {
 
 };
 
-form.addEventListener('input', throttle(onInputData, 500));
 
-form.addEventListener('submit', e => {
+    
+    function onFormSubmit(e) {
     e.preventDefault();
     console.log({ email: email.value, message: message.value });
-    form.reset();
+    if (email.value === '' || message.value === '') {
+        return allert('Wypełnij wszystkie pola');
+    }
     localStorage.removeItem(localStorageKey);
+    e.currentTarget.reset();
+    objectSave = {};
         
     
-});
-
-
-
-const load = e => {
-    try {
-        const serializedState = localStorage.getItem(e);
-        return serializedState === null ? undefined : JSON.parse(serializedState);
-    }
-    catch (error) { console.error('Błąd:', error.message); }
 };
 
-const storageData = load(localStorageKey);
-if (storageData) {
-    email.value = storageData.email;
-    message.value = storageData.message;
-}
+
