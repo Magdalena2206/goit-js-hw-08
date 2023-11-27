@@ -5,8 +5,8 @@ const form = document.querySelector('.feedback-form');
 const localStorageKey = 'feedback-form-state';
 
 
-
-form.addEventListener('input', throttle(onInputData, 500));
+const throttledFetchData = throttle(onInputData, 5000);
+form.addEventListener('input', throttledFetchData);
 form.addEventListener('submit', onFormSubmit);
 
 let dataForm = JSON.parse(localStorage.getItem(localStorageKey)) || {};
