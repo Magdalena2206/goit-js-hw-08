@@ -1,4 +1,4 @@
-import { throttle } from 'lodash.throttle';
+import  throttle  from 'lodash.throttle';
 
 const form = document.querySelector('.feedback-form');
 
@@ -26,7 +26,7 @@ function onInputData(e) {
     e.preventDefault();
     console.log({ email: email.value, message: message.value });
     if (email.value === '' || message.value === '') {
-        return allert('Wypełnij wszystkie pola');
+        return alert('Wypełnij wszystkie pola');
     }
     localStorage.removeItem(localStorageKey);
     e.currentTarget.reset();
@@ -42,3 +42,5 @@ function reloadPage() {
         message.value = dataForm.message || '';
     }
 }
+
+
